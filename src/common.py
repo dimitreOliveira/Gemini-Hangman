@@ -20,6 +20,7 @@ def parse_configs(configs_path: str) -> dict:
 
 CONFIGS_PATH = "configs.yaml"
 MAX_TRIES = 6
+CATEGORIES = ["Country", "Animal", "Food", "Movie"]
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__file__)
