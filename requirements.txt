@@ -1,0 +1,7 @@
+isort
+black
+flake8
+mypy
+pyyaml
+streamlit
+google-cloud-aiplatform
