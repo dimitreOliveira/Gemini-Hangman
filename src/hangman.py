@@ -14,7 +14,7 @@ def guess_letter(letter: str, session: session_state) -> session_state:
     Returns:
         session_state: Updated session
     """
-    logger.info(f"Letter {letter} picked")
+    logger.info(f"Letter '{letter}' picked")
     if letter in session["word"]:
         session["correct_letters"].append(letter)
     else:
