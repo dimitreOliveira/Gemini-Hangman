@@ -17,6 +17,7 @@ def setup(project, location) -> None:
         location (_type_): Vertex AI project location
     """
     vertexai.init(project=project, location=location)
+    logger.info("Vertex AI setup finished")
 
 
 logging.basicConfig(level=logging.INFO)
@@ -24,7 +25,7 @@ logger = logging.getLogger(__file__)
 
 st.set_page_config(
     page_title="Gemini GeoGuesser",
-    page_icon="𓍯",
+    page_icon="🧩",
 )
 
 setup(configs["project"], configs["location"])

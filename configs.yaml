@@ -1,0 +1,8 @@
+model: gemini-1.0-pro-001
+project: {VERTEX_AI_PROJECT}
+location: {VERTEX_AI_LOCALTION}
+generation_config:
+  max_output_tokens: 1024
+  temperature: 1
+  top_p: 1
+  top_k: 32
