@@ -1,6 +1,6 @@
 # Gemini Hangman Game
 
-If you wanna checkout an online demo of this app, visit Gemma-Hangman at HuggingFace spaces [![Hugging Face Spaces](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-yellow)](https://huggingface.co/spaces/Dimitre/Gemma-Hangman). Be aware that it runs on CPU only and would be a bit slow.
+If you wanna checkout an online demo of this app, visit Gemma-Hangman at HuggingFace spaces [![Hugging Face Spaces](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-yellow)](https://huggingface.co/spaces/Dimitre/Gemma-Hangman). This version of the app uses the open source backend powered by Gemma, be aware that it runs on CPU only and would be a bit slow.
 
 ---
 
