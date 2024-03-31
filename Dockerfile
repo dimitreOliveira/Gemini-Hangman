@@ -8,5 +8,3 @@ COPY requirements.txt .
 RUN pip install -r requirements.txt
 COPY configs.yaml .
 COPY src/ src/
-
-CMD ["streamlit", "run", "src/app.py", "--server.port", "8501"]

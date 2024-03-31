@@ -5,3 +5,7 @@ mypy
 pyyaml
 streamlit
 google-cloud-aiplatform
+python-dotenv
+torch
+transformers
+accelerate

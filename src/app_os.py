@@ -1,23 +1,35 @@
 import logging
+import os
 
 import streamlit as st
-import vertexai
+import torch
+from dotenv import load_dotenv
+from transformers import AutoModelForCausalLM, AutoTokenizer
 
 from common import CATEGORIES, MAX_TRIES, configs
 from hangman import guess_letter
-from vertex_utils import query_hint, query_word
+from hf_utils import query_hint, query_word
 
 
 @st.cache_resource()
-def setup(project: str, location: str) -> None:
-    """Setups the Vertex AI project.
+def setup(model_id: str, device: str) -> None:
+    """Initializes the model and tokenizer.
 
     Args:
-        project (str): Vertex AI project name
-        location (str): Vertex AI project location
+        model_id (str): Model ID used to load the tokenizer and model.
     """
-    vertexai.init(project=project, location=location)
-    logger.info("Vertex AI setup finished")
+    logger.info(f"Loading model and tokenizer from model: '{model_id}'")
+    tokenizer = AutoTokenizer.from_pretrained(
+        model_id,
+        token=os.environ["HF_ACCESS_TOKEN"],
+    )
+    model = AutoModelForCausalLM.from_pretrained(
+        model_id,
+        torch_dtype=torch.float16,
+        token=os.environ["HF_ACCESS_TOKEN"],
+    ).to(device)
+    logger.info("Setup finished")
+    return {"tokenizer": tokenizer, "model": model}
 
 
 logging.basicConfig(level=logging.INFO)
@@ -28,7 +40,11 @@ st.set_page_config(
     page_icon="🧩",
 )
 
-setup(configs["project"], configs["location"])
+load_dotenv()
+assets = setup(configs["os_model"], configs["device"])
+
+tokenizer = assets["tokenizer"]
+model = assets["model"]
 
 if not st.session_state:
     st.session_state["word"] = ""
@@ -56,13 +72,17 @@ with col2:
 if start_btn:
     st.session_state["word"] = query_word(
         category,
-        configs["model"],
+        model,
+        tokenizer,
         configs["generation_config"],
+        configs["device"],
     )
     st.session_state["hint"] = query_hint(
         st.session_state["word"],
-        configs["model"],
+        model,
+        tokenizer,
         configs["generation_config"],
+        configs["device"],
     )
     st.session_state["hangman"] = "_" * len(st.session_state["word"])
     st.session_state["missed_letters"] = []
