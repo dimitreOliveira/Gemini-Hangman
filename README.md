@@ -1,8 +1,11 @@
 # Gemini Hangman Game
 
+If you wanna checkout an online demo of this app, visit Gemma-Hangman at HuggingFace spaces [![Hugging Face Spaces](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-yellow)](https://huggingface.co/spaces/Dimitre/Gemma-Hangman). Be aware that it runs on CPU only and would be a bit slow.
+
 ---
 
 This is a take on the classic [Hangman game](https://en.wikipedia.org/wiki/Hangman_(game)) using Generative models (in the form of [Google's Gemini](https://gemini.google.com/app)), taking advantage of the powerful and easy access of the [Vertex AI](https://cloud.google.com/vertex-ai) API and the flexibility of [Streamlit](https://streamlit.io) apps.
+
 
 You have two versions of this APP, one using the Vertex AI API as the backend, and the other one runs an open source model locally as the backend (Gemma 2b by default), from my experiments the Vertex AI API yields better results.
 
