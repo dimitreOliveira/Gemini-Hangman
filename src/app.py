@@ -77,7 +77,6 @@ if reset_btn:
 
 st.markdown(
     """
-    ## Guess the word based on a hint
     Note: you must input whitespaces and special characters.
     """
 )
